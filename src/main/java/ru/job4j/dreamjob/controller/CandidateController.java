@@ -19,4 +19,10 @@ public class CandidateController {
                 candidateRepository.findAll());
         return "candidates/list";
     }
+
+    @GetMapping("/create")
+    public String getCreationPage() {
+        return "candidates/create";
+    }
 }
+
