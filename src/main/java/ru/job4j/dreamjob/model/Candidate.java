@@ -1,19 +1,28 @@
 package ru.job4j.dreamjob.model;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class Candidate {
     private int id;
-    private String name;
-    private String description;
-    private LocalDateTime creationDate;
 
-    public Candidate(int id, String name, String description, LocalDateTime creationDate) {
+    private String name;
+
+    private String description;
+
+    private LocalDateTime creationDate
+            = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+
+    public Candidate(int id, String name, String description,
+                     LocalDateTime creationDate) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
+    }
+
+    public Candidate() {
     }
 
     public int getId() {

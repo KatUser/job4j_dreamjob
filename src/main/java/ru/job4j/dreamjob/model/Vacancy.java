@@ -23,6 +23,9 @@ public class Vacancy {
         this.creationDate = creationDate;
     }
 
+    public Vacancy() {
+    }
+
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
@@ -53,9 +56,6 @@ public class Vacancy {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Vacancy() {
     }
 
     @Override
