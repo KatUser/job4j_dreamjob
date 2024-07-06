@@ -9,7 +9,6 @@ import ru.job4j.dreamjob.service.VacancyService;
 @Controller
 @RequestMapping("/vacancies")
 public class VacancyController {
-
     private final VacancyService vacancyService;
 
     public VacancyController(VacancyService vacancyService) {
@@ -18,7 +17,8 @@ public class VacancyController {
 
     @GetMapping
     public String getAll(Model model) {
-        model.addAttribute("vacancies", vacancyService.findAll());
+        model.addAttribute("vacancies",
+                vacancyService.findAll());
         return "vacancies/list";
     }
 
@@ -63,6 +63,5 @@ public class VacancyController {
         }
         return "redirect:/vacancies";
     }
-
 }
 
