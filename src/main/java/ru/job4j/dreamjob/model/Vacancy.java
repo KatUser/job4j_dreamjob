@@ -15,12 +15,15 @@ public class Vacancy {
     private LocalDateTime creationDate
             = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
-    public Vacancy(int id, String title,
-                   String description, LocalDateTime creationDate) {
+    private boolean visible;
+
+    public Vacancy(int id, String title, String description,
+                   LocalDateTime creationDate, boolean visible) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
+        this.visible = visible;
     }
 
     public Vacancy() {
@@ -56,6 +59,14 @@ public class Vacancy {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     @Override
