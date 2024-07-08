@@ -24,23 +24,23 @@ public class MemoryCandidateRepository implements CandidateRepository {
         save(new Candidate(0,
                 "Tom",
                 "smart, knows some SQL",
-                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)));
+                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), 1));
         save(new Candidate(0,
                 "Jerry",
                 "not smart, likes cheese and Golang",
-                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)));
+                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), 1));
         save(new Candidate(0,
                 "Woodie",
                 "nice, but too loud; uses C++",
-                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)));
+                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), 2));
         save(new Candidate(0,
                 "Piggie",
                 "is a small piglet; enjoys Assembler",
-                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)));
+                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), 2));
         save(new Candidate(0,
                 "Minnie",
                 "is a small mouse that codes in Java",
-                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)));
+                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), 3));
     }
 
     @Override
@@ -62,7 +62,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
                         oldCandidate.getId(),
                         candidate.getName(),
                         candidate.getDescription(),
-                        candidate.getCreationDate())) != null;
+                        candidate.getCreationDate(),
+                        candidate.getCityId())) != null;
     }
 
     @Override

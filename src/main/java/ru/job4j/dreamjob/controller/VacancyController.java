@@ -14,7 +14,8 @@ public class VacancyController {
 
     private final CityService cityService;
 
-    public VacancyController(VacancyService vacancyService, CityService cityService) {
+    public VacancyController(VacancyService vacancyService,
+                             CityService cityService) {
         this.vacancyService = vacancyService;
         this.cityService = cityService;
     }
