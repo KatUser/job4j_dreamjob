@@ -17,13 +17,17 @@ public class Vacancy {
 
     private boolean visible;
 
+    private int cityId;
+
     public Vacancy(int id, String title, String description,
-                   LocalDateTime creationDate, boolean visible) {
+                   LocalDateTime creationDate, boolean visible,
+                   int cityId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
         this.visible = visible;
+        this.cityId = cityId;
     }
 
     public Vacancy() {
@@ -67,6 +71,14 @@ public class Vacancy {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId() {
+        this.cityId = cityId;
     }
 
     @Override
