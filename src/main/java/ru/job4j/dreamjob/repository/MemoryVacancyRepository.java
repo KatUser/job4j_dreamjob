@@ -4,8 +4,6 @@ import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Vacancy;
 
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +17,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final AtomicInteger nextId = new AtomicInteger(0);
 
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
-
+/*
     private MemoryVacancyRepository() {
         save(new Vacancy(0, "Intern Java Developer",
                 "We pay nothing, you get experience",
@@ -40,6 +38,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
                 "Don't even call us",
                 LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), false, 1, 0));
     }
+*/
 
     @Override
     public Vacancy save(Vacancy vacancy) {
@@ -49,8 +48,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
     }
 
     @Override
-    public boolean deleteById(int id) {
-        return vacancies.remove(id, vacancies.get(id));
+    public void deleteById(int id) {
+        vacancies.remove(id);
     }
 
     @Override
