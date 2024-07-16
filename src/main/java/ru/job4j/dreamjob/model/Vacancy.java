@@ -92,7 +92,7 @@ public class Vacancy {
         return cityId;
     }
 
-    public void setCityId() {
+    public void setCityId(int cityId) {
         this.cityId = cityId;
     }
 
