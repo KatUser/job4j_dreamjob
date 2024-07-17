@@ -38,12 +38,14 @@
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
                            placeholder="Как вас зовут?">
                 </div>
+
                 <div class="mb-3">
-                    <label for="description" class="form-label"><b>Опыт работы</b></label>
-                    <textarea class="form-control" id="description" name="description" th:field="*{description}"
+                    <label for="description" class="form-label"><b>Ваш опыт работы</b></label>
+                    <textarea class="form-control" id="description"  th:field="*{description}"
                               rows="25"
                               placeholder="Опишите предыдущий опыт работы"></textarea>
                 </div>
+
                 <div class="mb-3">
                     <label for="city"><b>Город</b></label>
                     <select class="form-control" id="city" name="cityId">

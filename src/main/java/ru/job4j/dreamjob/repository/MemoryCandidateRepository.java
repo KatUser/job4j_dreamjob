@@ -4,8 +4,6 @@ import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
 
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +17,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final AtomicInteger nextId = new AtomicInteger(0);
 
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
-
+/*
     private MemoryCandidateRepository() {
         save(new Candidate(0,
                 "Tom",
@@ -43,6 +41,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
                 LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), 3, 0));
     }
 
+ */
+
     @Override
     public Candidate save(Candidate candidate) {
         candidate.setId(nextId.incrementAndGet());
@@ -51,8 +51,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
     }
 
     @Override
-    public boolean deleteById(int id) {
-        return candidates.remove(id, candidates.get(id));
+    public void deleteById(int id) {
+        candidates.remove(id);
     }
 
     @Override
