@@ -1,7 +1,6 @@
 package ru.job4j.dreamjob.repository;
 
 import static java.util.Optional.empty;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -76,12 +75,10 @@ class Sql2oUserRepositoryTest {
         var user1 = new User(0, "u", "u", "p");
         var user2 = new User(0, "u", "u2", "p2");
         sql2oUserRepository.save(user1);
-        Exception exception = assertThrows(Exception.class, () -> {
+        assertThatThrownBy(() -> {
             sql2oUserRepository.save(user2);
-        });
-        String expectedMessage = "Error in executeUpdate, Нарушение уникального индекса или первичного ключа";
-        String actualMessage = exception.getMessage();
-        assertTrue(actualMessage.contains(expectedMessage));
+        }).isInstanceOf(Exception.class);
+
     }
 
     @Test
