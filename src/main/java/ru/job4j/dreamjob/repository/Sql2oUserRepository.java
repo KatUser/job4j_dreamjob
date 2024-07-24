@@ -39,8 +39,15 @@ public class Sql2oUserRepository implements UserRepository {
                     "SELECT * FROM users WHERE email = :email AND password = :password");
             query.addParameter("email", email);
             query.addParameter("password", password);
-            return Optional.of(query.executeAndFetchFirst(User.class));
+            var user = query.executeAndFetchFirst(User.class);
+            return Optional.ofNullable(user);
+        }
+    }
+
+    public void deleteAllUsers() {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("DELETE FROM users");
+            query.executeUpdate();
         }
     }
 }
-
