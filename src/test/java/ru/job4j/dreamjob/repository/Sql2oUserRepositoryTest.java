@@ -71,13 +71,12 @@ class Sql2oUserRepositoryTest {
     }
 
     @Test
-    public void whenSaveUsersWithSameEmailsThenReceiveException() {
+    public void whenSaveUsersWithSameEmailsThenCannotGetTheSecondOne() {
         var user1 = new User(0, "u", "u", "p");
         var user2 = new User(0, "u", "u2", "p2");
         sql2oUserRepository.save(user1);
-        assertThatThrownBy(() -> {
-            sql2oUserRepository.save(user2);
-        }).isInstanceOf(Exception.class);
+        sql2oUserRepository.save(user2);
+        assertThat(sql2oUserRepository.findByEmailAndPassword("u", "u2")).isEmpty();
 
     }
 

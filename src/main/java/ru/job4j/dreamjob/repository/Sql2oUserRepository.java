@@ -5,9 +5,13 @@ import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.model.User;
 
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Repository
 public class Sql2oUserRepository implements UserRepository {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Sql2oUserRepository.class.getName());
 
     private final Sql2o sql2o;
 
@@ -28,8 +32,10 @@ public class Sql2oUserRepository implements UserRepository {
                     .addParameter("password", user.getPassword());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             user.setId(generatedId);
-            return Optional.of(user);
+        } catch (Exception e) {
+            LOG.error("Error in executeUpdate: cannot save duplicate email", e);
         }
+        return Optional.of(user);
     }
 
     @Override
