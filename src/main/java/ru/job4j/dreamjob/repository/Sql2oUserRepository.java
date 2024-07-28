@@ -32,10 +32,11 @@ public class Sql2oUserRepository implements UserRepository {
                     .addParameter("password", user.getPassword());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             user.setId(generatedId);
+            return Optional.of(user);
         } catch (Exception e) {
-            LOG.error("Error in executeUpdate: cannot save duplicate email", e);
+            LOG.error("Ошибка : такой email уже зарегистрирован", e);
         }
-        return Optional.of(user);
+        return Optional.empty();
     }
 
     @Override
